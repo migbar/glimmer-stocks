@@ -1,5 +1,11 @@
-<div>
+<ul>
+
   {{#each quotes key="@index" as |quote|}}
-    <symbol-quote @quote={{quote}} />
+
+    <li>
+      <symbol-quote @quote={{quote}} />
+    </li>
+
   {{/each}}
-</div>
+
+</ul>

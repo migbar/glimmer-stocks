@@ -1,27 +1,26 @@
 import Component, { tracked } from '@glimmer/component';
-import ArrayUtil from './util';
+import ArrayUtil from './array-util';
 
 const url = 'https://www.google.com/finance/info?q='
 
-export default class StockQuotes extends Component {  
-  @tracked
-  quotes: any;
+export default class StockQuotes extends Component {
+  @tracked quotes: any;
 
   constructor(options) {
     super(options);
     this.loadQuotes();
   }
 
-  parseQuotes(data) {        
-    let raw = new ArrayUtil().arrayToString(data.value);    
-    let quotes = JSON.parse(raw.slice(3,raw.length));    
-    this.quotes = quotes;
+  parseQuotes(data) {
+    let raw = new ArrayUtil().arrayToString(data.value);
+    return JSON.parse(raw.slice(3,raw.length));
   }
 
   async loadQuotes() {
-    let response = await fetch(`${url}${this.args['symbols']}`)    
+    let response = await fetch(`${url}${this.args['symbols']}`);
     let data = await response.body.getReader().read();
-    return this.parseQuotes(data);
+
+    this.quotes = this.parseQuotes(data);
   }
 
 };

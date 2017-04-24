@@ -1,3 +1,31 @@
-h1 {
-  color: #444;
+html, body, div {
+ margin: 0;
+ padding: 0;
+ font-family: sans-serif;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  width: 220px;
+
+  li {
+    background: #07A9DA;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #DDD;
+
+    .last-updated {
+      font-size: 10px;
+      font-weight: 200;      
+      float: right;
+      margin-bottom: 5px;
+    }
+
+  }
+
 }
